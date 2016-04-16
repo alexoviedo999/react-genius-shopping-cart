@@ -7,18 +7,24 @@ const Products = [
 ];
 
 class App extends Component {
-
+	constructor() {
+		super();
+		this.state = {
+			products: Product,
+			items: []
+		}
+	}
 
 	render(){
 
-	  return (
-		<div>
-			<h1>hello</h1>
-			<ProductList products={Products}/>
+		const {products} = this.state;
 
-		</div>
+	  	return (
+			<div>
+				<h1>hello</h1>
+				<ProductList products={products}/>
 
-
+			</div>
 	  )
 	}
 }
@@ -48,7 +54,17 @@ function Product (props) {
 
 	return (
 		<li>
-			<p>{product.name}</p>
+			<div>
+				<button>+</button>
+			</div>
+			<div>
+				<p>{product.name}</p>
+				<p>{product.promo}</p>
+			</div>
+			<div>
+				<p>{product.price}</p>
+			</div>
+
 		</li>
 	)
 }
