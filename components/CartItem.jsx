@@ -1,7 +1,7 @@
 import React from 'react';
 
 function CartItem (props) {
-	const {item} = props
+	const {item, removeItem} = props
 	const itemAmount = item.qty !== 0 ? item.amount / item.qty : 0;
 
 	const cartStyle = {
@@ -17,9 +17,9 @@ function CartItem (props) {
 
 	return (
 		<li style={cartStyle.liStyle}>
-			
-			<div style={cartStyle.divStyle}>
 
+			<div style={cartStyle.divStyle} onClick={()=> removeItem(item.code)}>
+				delete
 			</div>
 			<div style={cartStyle.divStyle}>
 				{item.code} - {item.name}

@@ -15,6 +15,7 @@ class App extends Component {
 
 		this.addToCart = this.addToCart.bind(this);
 		this.updateQty = this.updateQty.bind(this);
+		this.removeItem = this.removeItem.bind(this);
 	}
 
 	addToCart (item) {
@@ -34,6 +35,11 @@ class App extends Component {
       this.setState({cartItems});
     }
 
+	removeItem (code) {
+	  let {cartItems} = this.state;
+	  cartItems = cartItems.filter( item => item.code !== code );
+	  this.setState({cartItems});
+	}
 
 
 	render(){
@@ -44,11 +50,14 @@ class App extends Component {
 				<ProductList
 					products={products}
 					addToCart={this.addToCart}
-					updateQty={this.updateQty}
 
 					/>
 
-				<CartList cartItems={cartItems}/>
+				<CartList
+					cartItems={cartItems}
+					removeItem={this.removeItem}
+					updateQty={this.updateQty}
+					/>
 			</div>
 	  )
 	}
