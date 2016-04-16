@@ -3,6 +3,7 @@ import CartItem from './CartItem.jsx';
 
 function CartList (props) {
 	const {cartItems, updateQty} = props;
+	const total = cartItems.reduce( (prev, item) => prev + item.amount, 0);
 
 	const cartListStyle = {
 		divStyle: {
@@ -28,6 +29,10 @@ function CartList (props) {
 					})
 				}
 			</ul>
+
+			<div>
+				<h1>{total}</h1>
+			</div>
 		</div>
 	)
 
