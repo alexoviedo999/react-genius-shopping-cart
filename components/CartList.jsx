@@ -2,7 +2,7 @@ import React from 'react';
 import CartItem from './CartItem.jsx';
 
 function CartList (props) {
-	const {cartItems, updateQty, removeItem} = props;
+	const {cartItems, updateQty, removeItem, clearCart} = props;
 	const total = cartItems.reduce( (prev, item) => prev + item.amount, 0);
 
 	const cartListStyle = {
@@ -26,7 +26,8 @@ function CartList (props) {
 							item={item}
 							key={item.code + index}
 							updateQty={updateQty}
-							removeItem={removeItem} />
+							removeItem={removeItem}
+							clearCart={clearCart} />
 					})
 				}
 			</ul>
@@ -34,6 +35,8 @@ function CartList (props) {
 			<div>
 				<h1>{total}</h1>
 			</div>
+
+			<button onClick={()=> clearCart()}>Reset Cart</button>
 		</div>
 	)
 
