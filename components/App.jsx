@@ -11,27 +11,48 @@ class App extends Component {
 		super();
 		this.state = {
 			products: Product,
-			items: []
+			cartItems: []
 		}
+
+		this.addToCart = this.addToCart.bind(this);
 	}
 
-	render(){
+	addToCart (item) {
 
-		const {products} = this.state;
+		let {cartItems} = this.state;
+		this.setState({cartItems : addToCart(cartItems, item)})
+	}
+
+// addToCart={this.addToCart}
+
+	render(){
+		const {products, cartItems} = this.state;
 
 	  	return (
 			<div>
 				<h1>hello</h1>
-				<ProductList products={products}/>
+				<ProductList
+					products={products}
+					addToCart={this.addToCart}
 
+					/>
+
+				<CartList cartItems={cartItems}/>
 			</div>
 	  )
 	}
 }
 
+function addToCart (cart, item) {
+	cart.push(item);
+	return cart;
+}
+
+
 function ProductList(props) {
-	const {products} = props;
-	console.log('products', products);
+	const {products, addToCart} = props;
+	// const {products} = props;
+	// console.log('products', products);
 
 	return (
 		<div>
@@ -40,7 +61,12 @@ function ProductList(props) {
 				{
 					Products.map(product => {
 						return (
-							<Product product={product} key={product.code} />
+							<Product
+								product={product}
+								key={product.code}
+								addToCart={addToCart}
+
+								/>
 						)
 					})
 				}
@@ -50,12 +76,12 @@ function ProductList(props) {
 }
 
 function Product (props) {
-	const {product} = props;
+	const {product, addToCart} = props;
 
 	return (
 		<li>
 			<div>
-				<button>+</button>
+				<button onClick={()=> addToCart(product)}>+</button>
 			</div>
 			<div>
 				<p>{product.name}</p>
@@ -65,6 +91,32 @@ function Product (props) {
 				<p>{product.price}</p>
 			</div>
 
+		</li>
+	)
+}
+
+function CartList (props) {
+	const {cartItems} = props;
+
+	return (
+
+		<ul>
+			{
+				cartItems.map(item => {
+					return <CartItem item={item} />
+				})
+			}
+		</ul>
+	)
+
+}
+
+function CartItem (props) {
+	const {item} = props;
+
+	return (
+		<li>
+			{item.name}
 		</li>
 	)
 }
