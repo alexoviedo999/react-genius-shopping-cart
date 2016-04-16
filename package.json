@@ -1,0 +1,17 @@
+{
+  "name": "react-genius-shopping-cart",
+  "version": "1.0.0",
+  "description": "shopping cart",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "author": "Alejandro Oviedo",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-loader": "5.3.3",
+    "react": "15.0.1",
+    "webpack": "1.12.2",
+    "react-dom": "15.0.1"
+  }
+}
