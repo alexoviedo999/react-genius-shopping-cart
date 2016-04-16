@@ -14,12 +14,27 @@ class App extends Component {
 		}
 
 		this.addToCart = this.addToCart.bind(this);
+		this.updateQty = this.updateQty.bind(this);
 	}
 
 	addToCart (item) {
 		let {cartItems} = this.state;
 		this.setState({cartItems : addToCart(cartItems, item)})
 	}
+
+	updateQty (code, qty){
+      qty = parseInt(qty) || 0;
+      let {cartItems} = this.state;
+      cartItems = cartItems.map((item) => {
+        if(item.code === code){
+          item = updateItemQty(item, qty);
+        }
+        return item;
+      });
+      this.setState({cartItems});
+    }
+
+
 
 	render(){
 		const {products, cartItems} = this.state;
@@ -29,6 +44,7 @@ class App extends Component {
 				<ProductList
 					products={products}
 					addToCart={this.addToCart}
+					updateQty={this.updateQty}
 
 					/>
 
@@ -38,10 +54,28 @@ class App extends Component {
 	}
 }
 
-function addToCart (cart, item) {
-	cart.push(item);
-	return cart;
+function updateItemQty(item, qty){
+  item.qty = qty;
+  item.amount = item.price(item.qty) * ( item.qty - item.freeQty(item.qty));
+  return item;
 }
+
+function addToCart(cart, item){
+  const itemInCart = cart.findIndex(ci => ci.code === item.code) > -1;
+  if (itemInCart){
+     cart = cart.map(ci => {
+       if (ci.code === item.code) {
+         ci.qty += 1;
+       }
+       return updateItemQty(ci, ci.qty)
+     })
+  }
+  else{
+    cart.push(updateItemQty(item, 1))
+  }
+  return cart;
+}
+
 
 
 export default App;

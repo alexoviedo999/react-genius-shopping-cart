@@ -2,7 +2,7 @@ import React from 'react';
 import CartItem from './CartItem.jsx';
 
 function CartList (props) {
-	const {cartItems} = props;
+	const {cartItems, updateQty} = props;
 
 	const cartListStyle = {
 		divStyle: {
@@ -20,8 +20,11 @@ function CartList (props) {
 			<h4 style={cartListStyle.h4Style}>Cart</h4>
 			<ul>
 				{
-					cartItems.map(item => {
-						return <CartItem item={item} />
+					cartItems.map((item, index) => {
+						return <CartItem
+							item={item}
+							key={item.code + index}
+							updateQty={updateQty} />
 					})
 				}
 			</ul>
