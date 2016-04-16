@@ -9,13 +9,16 @@ function ProductList(props) {
 		divStyle: {
 			display: 'inline-block',
 			margin: '10px'
+		},
+		ulStyle: {
+			paddingLeft: '0'
 		}
 	}
 
 	return (
 		<div style={productListStyle.divStyle}>
 			<div>Available Products</div>
-			<ul>
+			<ul style={productListStyle.ulStyle}>
 				{
 					Products.map(product => {
 						return (

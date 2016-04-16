@@ -6,13 +6,32 @@ function CartItem (props) {
 	const cartStyle = {
 		liStyle: {
 			listStyleType: 'none'
+		},
+		divStyle: {
+			display: 'inline-block',
+			margin: '10px'
 		}
 	}
 
+
 	return (
 		<li style={cartStyle.liStyle}>
-			{item.name}
+
+			<div style={cartStyle.divStyle}>
+
+			</div>
+			<div style={cartStyle.divStyle}>
+				{item.code} - {item.name}
+			</div>
+			<div style={cartStyle.divStyle}>
+
+			</div>
+			<div style={cartStyle.divStyle}>
+				{item.price}
+			</div>
 		</li>
+
+
 	)
 }
 
