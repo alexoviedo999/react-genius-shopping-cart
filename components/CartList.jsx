@@ -4,15 +4,23 @@ import CartItem from './CartItem.jsx';
 function CartList (props) {
 	const {cartItems} = props;
 
-	return (
+	const cartListStyle = {
+		divStyle: {
+			display: 'inline-block',
+			margin: '10px'
+		}
+	}
 
-		<ul>
-			{
-				cartItems.map(item => {
-					return <CartItem item={item} />
-				})
-			}
-		</ul>
+	return (
+		<div style={cartListStyle.divStyle}>			
+			<ul>
+				{
+					cartItems.map(item => {
+						return <CartItem item={item} />
+					})
+				}
+			</ul>
+		</div>
 	)
 
 }

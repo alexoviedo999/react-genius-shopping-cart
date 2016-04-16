@@ -26,7 +26,6 @@ class App extends Component {
 
 	  	return (
 			<div>
-				<h1>hello</h1>
 				<ProductList
 					products={products}
 					addToCart={this.addToCart}
@@ -43,10 +42,6 @@ function addToCart (cart, item) {
 	cart.push(item);
 	return cart;
 }
-
-
-
-
 
 
 export default App;

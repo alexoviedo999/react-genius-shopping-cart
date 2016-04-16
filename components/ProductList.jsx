@@ -5,9 +5,16 @@ import Product from './Product.jsx';
 function ProductList(props) {
 	const {products, addToCart} = props;
 
+	const productListStyle = {
+		divStyle: {
+			display: 'inline-block',
+			margin: '10px'
+		}
+	}
+
 	return (
-		<div>
-			<div>Products</div>
+		<div style={productListStyle.divStyle}>
+			<div>Available Products</div>
 			<ul>
 				{
 					Products.map(product => {

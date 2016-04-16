@@ -1,10 +1,16 @@
 import React from 'react';
 
 function CartItem (props) {
-	const {item} = props;
+	const {item} = props
+
+	const cartStyle = {
+		liStyle: {
+			listStyleType: 'none'
+		}
+	}
 
 	return (
-		<li>
+		<li style={cartStyle.liStyle}>
 			{item.name}
 		</li>
 	)
