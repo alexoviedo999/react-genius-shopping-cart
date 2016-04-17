@@ -53,31 +53,34 @@ class App extends Component {
 	render(){
 		const {products, cartItems} = this.state;
 
-		const leftComponentsStyle = {
-		  display: 'inline-block',
-		  width: '60%',
-		  margin: '30px 25px 50px 30px'
+		const appStyle = {
+			wrapperDiv: {
+				width: '100%'
+			},
+			leftComponentsStyle: {
+				display: 'inline-block',
+				width: '60%',
+				margin: '30px 25px 50px 30px'
+			}
 		}
 
 	  	return (
-			<div>
+			<div style={appStyle.wrapperDiv}>
 				<Banner />
-				<div style={leftComponentsStyle}>
+				<div style={appStyle.leftComponentsStyle}>
 					<div>
 						<ProductList
 							products={products}
 							addToCart={this.addToCart}
-
-							/>
-
-						<CartList
-							cartItems={cartItems}
-							removeItem={this.removeItem}
-							updateQty={this.updateQty}
-							clearCart={this.clearCart}
 							/>
 					</div>
 				</div>
+				<CartList
+					cartItems={cartItems}
+					removeItem={this.removeItem}
+					updateQty={this.updateQty}
+					clearCart={this.clearCart}
+					/>
 			</div>
 	  )
 	}
@@ -103,6 +106,11 @@ function addToCart(cart, item){
     cart.push(updateItemQty(item, 1))
   }
   return cart;
+}
+
+export function formatMoney(cents){
+  const dollars = (cents / 100.0).toFixed(2);
+  return `$${dollars}`
 }
 
 

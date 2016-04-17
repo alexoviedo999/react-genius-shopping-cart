@@ -7,20 +7,29 @@ function CartList (props) {
 	const total = cartItems.reduce( (prev, item) => prev + item.amount, 0);
 
 	const cartListStyle = {
+		wrapperStyle: {
+			display: 'inline-block',
+			width: '30%'
+		},
 		divStyle: {
-			width: '30%',
 			minWidth: '255px',
 			marginLeft: '30px',
 			height: '600px',
 			backgroundColor: '#f4f4f4',
-			display: 'inline-block',
-			position: 'relative',
-			top: '-24px'
+			top: '-150px',
+			position: 'relative'
 		},
 		h4Style: {
 			textAlign: 'center',
 			color:'#40b7e4',
 			fontWeight:'200',
+		},
+		resetDiv: {
+			width: '250px',
+			margin: '20px',
+			left: '-330px',
+			position: 'relative',
+			bottom: '300px'
 		},
 		resetButtonStyle: {
 			borderRadius:'15px',
@@ -50,32 +59,35 @@ function CartList (props) {
 		    position: 'relative',
 		    top: '50%'
 		  }
-
-
 	}
 
 	return (
-		<div style={cartListStyle.divStyle}>
-			<h4 style={cartListStyle.h4Style}>Cart</h4>
-			<ul>
-				{
-					cartItems.map((item, index) => {
-						return <CartItem
-							item={item}
-							key={item.code + index}
-							updateQty={updateQty}
-							removeItem={removeItem}
-							clearCart={clearCart} />
-					})
-				}
-			</ul>
+		<div style={cartListStyle.wrapperStyle}>
 
-			<div style={cartListStyle.totalPriceCircleStyle}>
-				<h1>{total}</h1>
+			<div style={cartListStyle.divStyle}>
+				<h4 style={cartListStyle.h4Style}>Cart</h4>
+				<ul>
+					{
+						cartItems.map((item, index) => {
+							return <CartItem
+								item={item}
+								key={item.code + index}
+								updateQty={updateQty}
+								removeItem={removeItem}
+								clearCart={clearCart} />
+						})
+					}
+				</ul>
+
+				<div style={cartListStyle.totalPriceCircleStyle}>
+					<h1>{total}</h1>
+				</div>
 			</div>
-			<Button style={cartListStyle.resetButtonStyle} onClick={()=> clearCart()}>
-				<span style={cartListStyle.resetButtonStyle.buttonSpan}>Reset Cart</span>
-			</Button>
+			<div style={cartListStyle.resetDiv}>
+				<Button style={cartListStyle.resetButtonStyle} onClick={()=> clearCart()}>
+					<span style={cartListStyle.resetButtonStyle.buttonSpan}>Reset Cart</span>
+				</Button>
+			</div>
 		</div>
 	)
 
