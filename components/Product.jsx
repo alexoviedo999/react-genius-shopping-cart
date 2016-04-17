@@ -34,7 +34,6 @@ function Product (props) {
 				<Button style={productStyle.addButton} variant="fab" size="small" onClick={()=> addToCart(product)}>
 					<span style={productStyle.addButton.spanStyle}>+</span>
 					</Button>
-
 			</div>
 			<div style={productStyle.divStyle}>
 				<p>{product.name}</p>

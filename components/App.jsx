@@ -56,11 +56,34 @@ class App extends Component {
 		const appStyle = {
 			wrapperDiv: {
 				width: '100%'
+
 			},
 			leftComponentsStyle: {
 				display: 'inline-block',
 				width: '60%',
-				margin: '30px 25px 50px 30px'
+				margin: '0 0 0 15px',
+				position: 'relative',
+				top: '-50px'
+			},
+			resetDiv: {
+				// width: '98px'
+			},
+			resetButtonStyle: {
+				borderRadius:'15px',
+				height: '30px',
+				width: '200px',
+				float: 'right',
+				backgroundColor: "#E45DbF",
+				color: '#fff',
+
+				buttonSpan: {
+					lineHeight:'32px',
+					fontWeight:'200',
+					textTransform: 'none',
+					letterSpacing: '3px',
+					fontSize: '12px',
+					display: 'inherit'
+				}
 			}
 		}
 
@@ -74,13 +97,20 @@ class App extends Component {
 							addToCart={this.addToCart}
 							/>
 					</div>
+					<div style={appStyle.resetDiv}>
+						<Button style={appStyle.resetButtonStyle} onClick={()=> this.clearCart()}>
+							<span style={appStyle.resetButtonStyle.buttonSpan}>Reset Cart</span>
+						</Button>
+					</div>
 				</div>
+
 				<CartList
 					cartItems={cartItems}
 					removeItem={this.removeItem}
 					updateQty={this.updateQty}
 					clearCart={this.clearCart}
 					/>
+
 			</div>
 	  )
 	}
@@ -107,12 +137,6 @@ function addToCart(cart, item){
   }
   return cart;
 }
-
-export function formatMoney(cents){
-  const dollars = (cents / 100.0).toFixed(2);
-  return `$${dollars}`
-}
-
 
 
 export default App;
