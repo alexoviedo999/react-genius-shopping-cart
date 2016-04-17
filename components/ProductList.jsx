@@ -12,12 +12,17 @@ function ProductList(props) {
 		},
 		ulStyle: {
 			paddingLeft: '0'
+		},
+		headerStyle: {
+		  color:'#40b7e4',
+		  fontWeight:'100',
+		  marginLeft: '10px'
 		}
 	}
 
 	return (
 		<div style={productListStyle.divStyle}>
-			<div>Available Products</div>
+			<h2 style={productListStyle.headerStyle}>Available Products</h2>
 			<ul style={productListStyle.ulStyle}>
 				{
 					Products.map(product => {

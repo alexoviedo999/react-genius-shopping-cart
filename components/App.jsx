@@ -4,6 +4,9 @@ import CartList from './CartList.jsx';
 import Product from './Product.jsx';
 import ProductList from './ProductList.jsx';
 import Products from '../Products.js';
+import Banner from './Banner.jsx'
+import { Appbar, Button, Container } from 'muicss/react';
+
 
 class App extends Component {
 	constructor() {
@@ -50,20 +53,31 @@ class App extends Component {
 	render(){
 		const {products, cartItems} = this.state;
 
+		const leftComponentsStyle = {
+		  display: 'inline-block',
+		  width: '60%',
+		  margin: '30px 25px 50px 30px'
+		}
+
 	  	return (
 			<div>
-				<ProductList
-					products={products}
-					addToCart={this.addToCart}
+				<Banner />
+				<div style={leftComponentsStyle}>
+					<div>
+						<ProductList
+							products={products}
+							addToCart={this.addToCart}
 
-					/>
+							/>
 
-				<CartList
-					cartItems={cartItems}
-					removeItem={this.removeItem}
-					updateQty={this.updateQty}
-					clearCart={this.clearCart}
-					/>
+						<CartList
+							cartItems={cartItems}
+							removeItem={this.removeItem}
+							updateQty={this.updateQty}
+							clearCart={this.clearCart}
+							/>
+					</div>
+				</div>
 			</div>
 	  )
 	}
