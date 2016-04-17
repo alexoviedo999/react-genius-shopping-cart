@@ -60,13 +60,13 @@ class App extends Component {
 			},
 			leftComponentsStyle: {
 				display: 'inline-block',
-				width: '60%',
+				width: '63%',
 				margin: '0 0 0 15px',
 				position: 'relative',
-				top: '-50px'
+				top: '-75px'
 			},
 			resetDiv: {
-				// width: '98px'
+
 			},
 			resetButtonStyle: {
 				borderRadius:'15px',

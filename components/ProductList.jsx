@@ -8,7 +8,8 @@ function ProductList(props) {
 	const productListStyle = {
 		divStyle: {
 			display: 'inline-block',
-			margin: '10px'
+			margin: '10px',
+			width: '100%'
 		},
 		ulStyle: {
 			paddingLeft: '0'

@@ -22,6 +22,7 @@ function CartList (props) {
 			textAlign: 'center',
 			color:'#40b7e4',
 			fontWeight:'200',
+			fontSize: '18px'
 		},
 		totalPriceCircleStyle: {
 		    border: '10px solid #78be20',
